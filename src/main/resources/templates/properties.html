@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<div class="container mt-5">
+    <h2>All Properties</h2>
+    <table class="table table-striped mt-3">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Address</th>
+            <th>Type</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="property : ${properties}">
+            <td th:text="${property.id}"></td>
+            <td th:text="${property.address}"></td>
+            <td th:text="${property.type}"></td>
+            <td th:text="${property.price}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="/properties/new">Add New Property</a>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

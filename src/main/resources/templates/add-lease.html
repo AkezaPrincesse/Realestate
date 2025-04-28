@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="container mt-5">
+  <h2>Add Lease</h2>
+  <form th:action="@{/leases}" th:object="${lease}" method="post">
+    <div class="mb-3">
+      <label>Tenant</label>
+      <select class="form-select" th:field="*{tenant}">
+        <option th:each="tenant : ${tenants}" th:value="${tenant}" th:text="${tenant.fullName}"></option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label>Property</label>
+      <select class="form-select" th:field="*{property}">
+        <option th:each="property : ${properties}" th:value="${property}" th:text="${property.name}"></option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label>Start Date</label>
+      <input type="date" class="form-control" th:field="*{startDate}" required>
+    </div>
+    <div class="mb-3">
+      <label>End Date</label>
+      <input type="date" class="form-control" th:field="*{endDate}" required>
+    </div>
+    <button type="submit" class="btn btn-success">Save Lease</button>
+  </form>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

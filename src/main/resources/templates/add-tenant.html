@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="container mt-5">
+  <h2>Add Tenant</h2>
+  <form th:action="@{/tenants}" th:object="${tenant}" method="post">
+    <div class="mb-3">
+      <label>Full Name</label>
+      <input type="text" class="form-control" th:field="*{fullName}" required>
+    </div>
+    <div class="mb-3">
+      <label>Email</label>
+      <input type="email" class="form-control" th:field="*{email}" required>
+    </div>
+    <div class="mb-3">
+      <label>Phone</label>
+      <input type="text" class="form-control" th:field="*{phone}" required>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

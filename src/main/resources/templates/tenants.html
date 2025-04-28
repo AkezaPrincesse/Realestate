@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<div class="container mt-5">
+  <h2>Tenants</h2>
+  <table class="table table-hover mt-3">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="tenant : ${tenants}">
+      <td th:text="${tenant.id}"></td>
+      <td th:text="${tenant.fullName}"></td>
+      <td th:text="${tenant.email}"></td>
+      <td th:text="${tenant.phone}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <a class="btn btn-primary" href="/tenants/new">Add New Tenant</a>
+</div>
+<a href="/tenants/export/pdf" class="btn btn-outline-primary mb-3">Export to PDF</a>
+<a href="/tenants/chart" class="btn btn-outline-success mb-3">View Chart</a>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

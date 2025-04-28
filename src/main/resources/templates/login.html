@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}"></head>
+<body>
+<div class="container mt-5">
+    <h2>Login</h2>
+    <form th:action="@{/login}" method="post">
+        <div class="mb-3">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-dark">Login</button>
+        <a href="/signup" class="btn btn-outline-success mb-3">Signup</a>
+
+    </form>
+</div>
+</body>
+</html>

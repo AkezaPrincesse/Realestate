@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title>Tenant Distribution Chart</title>
+    <!-- Add Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<div class="container mt-5">
+    <h2>Tenant Distribution by First Letter</h2>
+
+    <div class="chart-container">
+        <canvas id="tenantChart"></canvas>
+    </div>
+
+    <a href="/tenants" class="btn btn-primary mt-3">Back to Tenants List</a>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    document.addEventListener('DOMContentLoaded', function() {
+        const letters = /*[[${letters}]]*/ [];
+        const counts = /*[[${counts}]]*/ [];
+
+        const ctx = document.getElementById('tenantChart').getContext('2d');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: letters,
+                datasets: [{
+                    label: 'Number of Tenants',
+                    data: counts,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Tenant Distribution by First Letter of Name'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+    });
+    /*]]>*/
+</script>
+</body>
+</html>

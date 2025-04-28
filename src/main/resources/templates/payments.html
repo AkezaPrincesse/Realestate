@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<div class="container mt-5">
+  <h2>Payments</h2>
+  <table class="table table-striped mt-3">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Lease</th>
+      <th>Amount</th>
+      <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="payment : ${payments}">
+      <td th:text="${payment.id}"></td>
+      <td th:text="${payment.lease.id}"></td>
+      <td th:text="${payment.amount}"></td>
+      <td th:text="${payment.paymentDate}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <a class="btn btn-primary" href="/payments/new">Add Payment</a>
+</div>
+<a href="/payments/export/pdf" class="btn btn-outline-primary mb-3">Export to PDF</a>
+<a href="/payments/chart" class="btn btn-outline-success mb-3">View Chart</a>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

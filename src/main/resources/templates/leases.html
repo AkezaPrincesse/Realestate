@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<div class="container mt-5">
+  <h2>Leases</h2>
+  <table class="table table-hover mt-3">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Tenant</th>
+      <th>Property</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="lease : ${leases}">
+      <td th:text="${lease.id}"></td>
+      <td th:text="${lease.tenant.fullName}"></td>
+      <td th:text="${lease.property.name}"></td>
+      <td th:text="${lease.startDate}"></td>
+      <td th:text="${lease.endDate}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <a class="btn btn-primary" href="/leases/new">Add Lease</a>
+</div>
+<a href="/leases/export/pdf" class="btn btn-outline-primary mb-3">Export to PDF</a>
+<a href="/leases/chart" class="btn btn-outline-success mb-3">View Chart</a>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
